@@ -1,0 +1,45 @@
+<head>
+  <!-- Title -->
+  {{ if .IsHome }}
+    <title>{{ .Site.Title }}</title>
+  {{ else if (eq .Title .Site.Title ) }}
+    <title>{{ .Site.Title }}</title>
+  {{ else }}
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+  {{ end }}
+
+  <!-- Meta -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{end}}" />
+
+  <!-- Favicons from https://favicon.io/ -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Google Analytics -->
+  {{ if .Site.GoogleAnalytics }}
+    {{ template "_internal/google_analytics.html" . }}
+  {{ end }}
+
+  <!-- SEO -->
+  {{ template "_internal/schema.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+
+  <!-- RSS -->
+  {{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
+
+  <!-- Load SCSS -->
+  {{- $styles := resources.Get "scss/styles.scss" -}}
+  {{- $styles := $styles | resources.ToCSS (dict "outputStyle" "compressed" "includePaths" (slice "assets")) -}}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" type="text/css" media="all">
+
+  <!-- Load JS -->
+  {{- $index := resources.Get "js/index.js" -}}
+  {{- $index := $index | js.Build (dict "minify" "true") -}}
+  <script defer src="{{ $index.Permalink }}"></script>
+</head>

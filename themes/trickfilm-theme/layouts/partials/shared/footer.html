@@ -1,0 +1,21 @@
+<footer class="bg-dark py-5">
+  <div class="px-xl-5 container">
+    <div class="row px-xl-5 text-white">
+      <div class="col-12 d-flex justify-content-center align-items-center my-3">
+        {{ range site.Menus.social }}
+        <div class="">
+          <a
+            class="d-flex justify-content-center align-items-center bg-primary rounded-circle link-hover-invert me-3 p-1 text-white"
+            href="{{ .URL }}"
+          >
+            <span class="d-flex justify-content-center align-items-center h-2 w-2"> {{ partial "bs-icon" .Pre }} </span>
+          </a>
+        </div>
+        {{ end }}
+      </div>
+      {{ with site.Params.copyright }}
+      <div class="col-12 small my-3 text-center">{{ . }}</div>
+      {{ end }}
+    </div>
+  </div>
+</footer>

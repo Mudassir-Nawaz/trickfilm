@@ -1,0 +1,17 @@
+<section
+  class="bg-dark min-vh-75 position-relative d-flex flex-column justify-content-center bg-opacity-25 py-5"
+  id="hero"
+>
+  <div class="position-absolute z-n1 bottom-0 end-0 start-0 top-0">
+    {{ $backgroundImage := resources.Get .backgroundImage }}
+    {{ if not $backgroundImage }} {{ warnf "Image not found: %s." .backgroundImage }} {{ end }}
+    <img src="{{ $backgroundImage.Permalink }}" alt="" class="w-100 h-100 object-fit-cover object-position-center" />
+  </div>
+  <div class="px-xl-5 container">
+    <div class="row px-xl-5">
+      <div class="col-12 col-xl-6">
+        <h1 class="fw-semibold text-xl-start text-center text-white">{{ .title }}</h1>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+<div class="navbar-trigger"></div>
+<nav class="navbar navbar-expand-lg fixed-top initial d-flex align-items-center">
+  <div class="container">
+    <a class="text-decoration-none fw-bold fs-2 py-0 text-white" href="/">{{ site.Title }}</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar"
+      aria-label="Toggle Navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar">
+      <div class="offcanvas-header">
+        <h2 class="fw-bold text-white">{{ site.Title }}</h2>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="d-flex flex-column flex-lg-row justify-content-end align-items-lg-center flex-grow-1">
+          <ul class="navbar-nav mb-lg-0 mb-3">
+            {{ range site.Menus.main }}
+            <li class="nav-item">
+              <a class="nav-link fw-medium link-light link-opacity-75-hover" aria-current="page" href="{{ .URL }}"
+                >{{ .Name }}</a
+              >
+            </li>
+            {{ end }}
+          </ul>
+          <div class="d-flex ms-lg-4">
+            {{ range site.Menus.social }}
+            <div class="nav-item">
+              <a
+                class="d-flex justify-content-center align-items-center bg-primary rounded-circle link-hover-invert me-1 p-1 text-white"
+                href="{{ .URL }}"
+              >
+                <span class="d-flex justify-content-center align-items-center h-1 w-1">
+                  {{ partial "bs-icon" .Pre }}
+                </span>
+              </a>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
