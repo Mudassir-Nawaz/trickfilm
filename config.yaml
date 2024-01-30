@@ -6,7 +6,7 @@ title: 'Luke Jaeger'
 author: ''
 
 # googleAnalytics is deprecated -- see https://discourse.gohugo.io/t/replace-hugos-inbuilt-google-analytics-template-with-minimal-analytics-ga4/43704    
-# googleAnalytics: "G-VJCR2B1XTG"
+googleAnalytics: "G-VJCR2B1XTG"
 
 # although the new way doesn't seem to work either, so it's commented out too
 #[services]
