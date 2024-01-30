@@ -1,11 +1,11 @@
 {{ define "main" }}
-<section class="bg-dark min-vh-50 position-relative d-flex flex-column justify-content-center bg-opacity-25 py-5">
+<section class="bg-dark position-relative d-flex flex-column justify-content-center bg-opacity-25 pt-5 pb-3">
   <div class="position-absolute z-n1 bg-dark bottom-0 end-0 start-0 top-0">
     {{ with .Params.image }} {{ $backgroundImage := resources.Get . }}
     <img src="{{ $backgroundImage.Permalink }}" alt="" class="w-100 h-100 object-fit-cover object-position-center" />
     {{ end }}
   </div>
-  <div class="px-xl-5 container">
+  <div class="px-xl-5 container pt-5">
     <div class="row px-xl-5">
       <div class="col-12 col-xl-6">
         <h1 class="fw-semibold text-xl-start text-center text-white">{{ .Title }}</h1>

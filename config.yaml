@@ -18,6 +18,30 @@ params:
   images: []
   copyright: 'Copyright © Luke Jaeger'
 
+  metadata:
+    title: "trickfilm.org | Luke Jaeger"
+    description: "Luke Jaeger was born with a tool belt on, and can’t seem to stop creating. A native of Brooklyn, he’s lived and traveled in cities across the globe, but his work continually returns to the boilerplate metal and the clackety tracks of the NY subways of his youth."
+    canonical: "https://trickfilm.github.io/index.html"
+    author: "Luke Jaeger"
+    googleTag: "G-VJCR2B1XTG"
+    schema:
+      type: "ProfilePage"
+      name: "Luke Jaeger | trickfilm.org | art, animation, trains"
+      mainEntityType: "Person"
+      mainEntityType: "Luke Jaeger"
+      datePublished: "2023-12-20"
+      description: "Official site of artist / animator Luke Jaeger"
+      keywords: "art, animation, trains, subway, redbird, cartoon, miniature, comics, funk, soul, oldschool, cad, makerspace, compositing, photoshop, after effects"
+    twitterCard: "summary_large_image"
+    ogDescription: "art, animation, trains"
+    ogImage: "https://trickfilm.github.io/images/header-background.jpg"
+    ogSite: "https://trickfilm.github.io"
+    ogSiteName: "trickilm.org"
+    ogTitle: "Luke Jaeger | trickfilm.org"
+    ogType: "website"
+    ogUrl: "https://trickfilm.github.io"
+
+
 taxonomies:
   categories: 'categories'
   series: 'series'

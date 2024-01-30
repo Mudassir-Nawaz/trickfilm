@@ -1,17 +1,7 @@
 <head>
-  <!-- Title -->
-  {{ if .IsHome }}
-    <title>{{ .Site.Title }}</title>
-  {{ else if (eq .Title .Site.Title ) }}
-    <title>{{ .Site.Title }}</title>
-  {{ else }}
-    <title>{{ .Title }} | {{ .Site.Title }}</title>
-  {{ end }}
-
   <!-- Meta -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-  <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{end}}" />
 
   <!-- Favicons from https://favicon.io/ -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -19,14 +9,89 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Google Analytics -->
-  {{ if .Site.GoogleAnalytics }}
-    {{ template "_internal/google_analytics.html" . }}
+  <!-- SEO -->
+  <!-- Google tag (gtag.js) -->
+  {{ with .Params.metadata.googleTag }}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{ . }}');
+    </script>
   {{ end }}
 
-  <!-- SEO -->
-  {{ template "_internal/schema.html" . }}
-  {{ template "_internal/twitter_cards.html" . }}
+  {{ with .Params.metadata.schema }}
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org/",
+        "@type": "{{ .type }}",
+        "name": "{{ .name }}", 
+        "image": "https://trickfilm.github.io/images/redbird_002.jpg", 
+        "mainEntity": {
+          "@type": "{{ .mainEntityType }}",
+          "name": "{{ .mainEntityName }}"
+        },
+        "datePublished": "{{ .datePublished }}",
+        "description": "{{ .description }}",
+        "keywords": "{{ .keywords }}"
+      }
+    </script>
+  {{ end }}
+
+  <!-- canonical tag -->
+  {{ with site.Params.metadata.canonical }}
+    <link rel="canonical" href="{{ . }}">
+  {{ end }}
+
+  <!-- SEO Meta Tags -->
+  {{ with site.Params.metadata.description }}
+    <meta name="description" content="{{ . }}">
+  {{ end }}
+
+  {{ with site.Params.metadata.author }}
+    <meta name="author" content="{{ . }}">
+  {{ end }}
+
+  <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+  {{ with site.Params.metadata.twitterCard }}
+    <meta name="twitter:card" content="{{ . }}">
+  {{ end }}
+
+  {{ with site.Params.metadata.ogDescription }}
+    <meta property="og:description" content="{{ . }}">
+  {{ end }}
+
+  {{ with site.Params.metadata.ogImage }}
+    <meta property="og:image" content="{{ . }}">
+  {{ end }}
+
+  {{ with site.Params.metadata.ogSite }}
+    <meta property="og:site" content="{{ . }}" >
+  {{ end }}
+
+  {{ with site.Params.metadata.ogSiteName }}
+    <meta property="og:site_name" content="{{ . }}" >
+  {{ end }}
+
+  {{ with site.Params.metadata.ogTitle }}
+    <meta property="og:title" content="{{ . }}">
+  {{ end }}
+
+  {{ with site.Params.metadata.ogType }}
+    <meta property="og:type" content="{{ . }}">
+  {{ end }}
+
+  {{ with site.Params.metadata.ogUrl }}
+    <meta property="og:url" content="{{ . }}">
+  {{ end }}
+
+  <!-- Webpage Title -->
+  {{ with site.Params.metadata.title }}
+    <title>{{ . }}</title>
+  {{ end }}
+
 
   <!-- RSS -->
   {{ range .AlternativeOutputFormats -}}
