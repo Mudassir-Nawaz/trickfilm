@@ -1,4 +1,4 @@
 ---
 title: "art"
-subtitle: "lorem ipsum"
+subtitle: "a selection of new and older work"
 ---

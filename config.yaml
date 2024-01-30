@@ -5,7 +5,14 @@ theme: 'trickfilm-theme'
 title: 'Luke Jaeger'
 author: ''
 
-# googleAnalytics: ""
+# googleAnalytics is deprecated -- see https://discourse.gohugo.io/t/replace-hugos-inbuilt-google-analytics-template-with-minimal-analytics-ga4/43704    
+# googleAnalytics: "G-VJCR2B1XTG"
+
+# although the new way doesn't seem to work either, so it's commented out too
+#[services]
+#  [services.googleAnalytics]
+#    ID = 'G-VJCR2B1XTG'
+
 paginate: 9
 
 params:
