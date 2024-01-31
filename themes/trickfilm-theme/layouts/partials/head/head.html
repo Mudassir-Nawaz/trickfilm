@@ -10,6 +10,7 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- SEO -->
+  
   <!-- Google tag (gtag.js) -->
   {{ with site.Params.metadata.googleTag }}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
@@ -28,7 +29,7 @@
         "@context": "http://schema.org/",
         "@type": "{{ .type }}",
         "name": "{{ .name }}", 
-        "image": "https://trickfilm.github.io/images/redbird_002.jpg", 
+        "image": "https://trickfilm.github.io/uploads/hero-background.jpg", 
         "mainEntity": {
           "@type": "{{ .mainEntityType }}",
           "name": "{{ .mainEntityName }}"
