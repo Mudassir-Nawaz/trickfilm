@@ -35,7 +35,7 @@ params:
       type: "ProfilePage"
       name: "Luke Jaeger | trickfilm.org | art, animation, trains"
       mainEntityType: "Person"
-      mainEntityType: "Luke Jaeger"
+      mainEntityName: "Luke Jaeger"
       datePublished: "2024-01-31"
       description: "Official site of artist / animator Luke Jaeger"
       keywords: "art, animation, trains, subway, redbird, cartoon, miniature, comics, funk, soul, oldschool, cad, makerspace, compositing, photoshop, after effects"
