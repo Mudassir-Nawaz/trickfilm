@@ -1,4 +1,4 @@
-baseURL: '/'
+baseURL: 'https://trickfilm.github.io/'
 languageCode: 'en-us'
 theme: 'trickfilm-theme'
 
