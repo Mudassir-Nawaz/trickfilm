@@ -79,6 +79,10 @@ menus:
       url: '/#trains'
       weight: 500
 
+    - name: 'cv'
+      url: '/#cv'
+      weight: 550
+
     - name: 'contact'
       url: '/#contact'
       weight: 600
