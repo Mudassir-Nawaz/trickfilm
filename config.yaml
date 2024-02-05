@@ -83,6 +83,10 @@ menus:
       url: '/#cv'
       weight: 550
 
+    - name: 'publications'
+      url: '/publications'
+      weight: 590
+
     - name: 'contact'
       url: '/#contact'
       weight: 600
