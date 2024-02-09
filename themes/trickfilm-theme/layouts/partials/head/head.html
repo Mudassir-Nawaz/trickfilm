@@ -23,73 +23,73 @@
     </script>
   {{ end }}
 
-  {{ with site.Params.metadata.schema }}
+  {{ if (default site.Params.metadata.schema .Params.metadata.schema) }}
     <script type="application/ld+json">
       {
         "@context": "http://schema.org/",
-        "@type": "{{ .type }}",
-        "name": "{{ .name }}", 
-        "image": "https://trickfilm.github.io/uploads/hero-background.jpg", 
+        "@type": "{{ (default site.Params.metadata.schema.type .Params.metadata.schema.type) }}",
+        "name": "{{ (default site.Params.metadata.schema.name .Params.metadata.schema.name) }}", 
+        "image": "{{ (default site.Params.metadata.schema.image .Params.metadata.schema.image) }}", 
         "mainEntity": {
-          "@type": "{{ .mainEntityType }}",
-          "name": "{{ .mainEntityName }}"
+          "@type": "{{ (default site.Params.metadata.schema.mainEntityType .Params.metadata.schema.mainEntityType) }}",
+          "name": "{{ (default site.Params.metadata.schema.mainEntityName .Params.metadata.schema.mainEntityName) }}"
         },
-        "datePublished": "{{ .datePublished }}",
-        "description": "{{ .description }}",
-        "keywords": "{{ .keywords }}"
+        "datePublished": "{{ (default site.Params.metadata.schema.datePublished .Params.metadata.schema.datePublished) }}",
+        "description": "{{ (default site.Params.metadata.schema.description .Params.metadata.schema.description) }}",
+        "keywords": "{{ (default site.Params.metadata.schema.keywords .Params.metadata.schema.keywords) }}"
       }
     </script>
   {{ end }}
 
   <!-- canonical tag -->
-  {{ with site.Params.metadata.canonical }}
+  {{ with (default site.Params.metadata.canonical .Params.metadata.canonical) }}
     <link rel="canonical" href="{{ . }}">
   {{ end }}
 
   <!-- SEO Meta Tags -->
-  {{ with site.Params.metadata.description }}
+  {{ with (default site.Params.metadata.description .Params.metadata.description) }}
     <meta name="description" content="{{ . }}">
   {{ end }}
 
-  {{ with site.Params.metadata.author }}
+  {{ with (default site.Params.metadata.author .Params.metadata.author) }}
     <meta name="author" content="{{ . }}">
   {{ end }}
 
   <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
-  {{ with site.Params.metadata.twitterCard }}
+  {{ with (default site.Params.metadata.twitterCard .Params.metadata.twitterCard) }}
     <meta name="twitter:card" content="{{ . }}">
   {{ end }}
 
-  {{ with site.Params.metadata.ogDescription }}
+  {{ with (default site.Params.metadata.ogDescription .Params.metadata.ogDescription) }}
     <meta property="og:description" content="{{ . }}">
   {{ end }}
 
-  {{ with site.Params.metadata.ogImage }}
+  {{ with (default site.Params.metadata.ogImage .Params.metadata.ogImage) }}
     <meta property="og:image" content="{{ . }}">
   {{ end }}
 
-  {{ with site.Params.metadata.ogSite }}
+  {{ with (default site.Params.metadata.ogSite .Params.metadata.ogSite) }}
     <meta property="og:site" content="{{ . }}" >
   {{ end }}
 
-  {{ with site.Params.metadata.ogSiteName }}
+  {{ with (default site.Params.metadata.ogSiteName .Params.metadata.ogSiteName) }}
     <meta property="og:site_name" content="{{ . }}" >
   {{ end }}
 
-  {{ with site.Params.metadata.ogTitle }}
+  {{ with (default site.Params.metadata.ogTitle .Params.metadata.ogTitle) }}
     <meta property="og:title" content="{{ . }}">
   {{ end }}
 
-  {{ with site.Params.metadata.ogType }}
+  {{ with (default site.Params.metadata.ogType .Params.metadata.ogType) }}
     <meta property="og:type" content="{{ . }}">
   {{ end }}
 
-  {{ with site.Params.metadata.ogUrl }}
+  {{ with (default site.Params.metadata.ogUrl .Params.metadata.ogUrl) }}
     <meta property="og:url" content="{{ . }}">
   {{ end }}
 
   <!-- Webpage Title -->
-  {{ with site.Params.metadata.title }}
+  {{ with (default site.Params.metadata.title .Params.metadata.title) }}
     <title>{{ . }}</title>
   {{ end }}
 

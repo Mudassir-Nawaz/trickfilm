@@ -34,6 +34,7 @@ params:
     schema:
       type: "ProfilePage"
       name: "Luke Jaeger | trickfilm.org | art, animation, trains"
+      image: "https://trickfilm.github.io/uploads/hero-background.jpg"
       mainEntityType: "Person"
       mainEntityName: "Luke Jaeger"
       datePublished: "2024-01-31"
