@@ -2,6 +2,4 @@
 title: "publications"
 subtitle: "click to download a PDF"
 ---
-"1978 (Ladies & Gentlemen, The Rolling Stones)" from Massachusetts Review, Vol 46 issue 1
-
-"La Mono Nagra: An Analog Tale" from Massachusetts Review, Vol 52 issue 1
+In the 1990s, Shoshana Marchand and I published DreamWorldNews, a zine which reported contributors' dreams in deadpan, AP-style journalistic prose. Full issues below!
