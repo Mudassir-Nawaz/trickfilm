@@ -29,7 +29,7 @@
         "@context": "http://schema.org/",
         "@type": "{{ (default site.Params.metadata.schema.type .Params.metadata.schema.type) }}",
         "name": "{{ (default site.Params.metadata.schema.name .Params.metadata.schema.name) }}", 
-        "image": "{{ (default site.Params.metadata.schema.image .Params.metadata.schema.image) }}", 
+        "image": "{{ (default (default site.Params.metadata.schema.image .Params.metadata.schema.image) .Params.image) }}", 
         "mainEntity": {
           "@type": "{{ (default site.Params.metadata.schema.mainEntityType .Params.metadata.schema.mainEntityType) }}",
           "name": "{{ (default site.Params.metadata.schema.mainEntityName .Params.metadata.schema.mainEntityName) }}"
