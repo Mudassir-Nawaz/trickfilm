@@ -64,7 +64,7 @@
     <meta property="og:description" content="{{ . }}">
   {{ end }}
 
-  {{ with (default site.Params.metadata.ogImage .Params.metadata.ogImage) }}
+  {{ with (default (default site.Params.metadata.schema.image .Params.metadata.schema.image) .Params.image) }}
     <meta property="og:image" content="{{ . }}">
   {{ end }}
 
