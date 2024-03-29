@@ -72,29 +72,7 @@
   <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
   <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
   <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
-
-  {{ if .medium }}
-  {{ $mediumList := split .medium ", " }}
-  {{ range $mediumList }}
-  <meta property="og:medium" content="{{ . }}" />
-  {{ end }}
-  {{ end }}
-
-  {{ if .date }}
-  <meta property="og:date" content="{{ .date }}" />
-  {{ end }}
-
-  {{ if .tags }}
-  {{ range .tags }}
-  <meta property="og:tag" content="{{ . }}" />
-  {{ end }}
-  {{ end }}
-
-  {{ if .Content }}
-  <meta property="og:description" content="{{ .Content | plainify | truncate 200 | htmlEscape }}" />
-  {{ else }}
-  <meta property="og:description" content="{{ .description | default ($.Page.Params.medium) }}" />
-  {{ end }}
+  <meta property="og:description" content="{{ .description | default ($.Page.Params.description)}}">
   {{ end }}
 
 
