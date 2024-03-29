@@ -60,16 +60,30 @@
   <meta name="twitter:card" content="{{ . }}">
   {{ end }}
 
-  {{ if eq .Site.Params.openGraph true }}
+  {{{ if eq .Site.Params.openGraph true }}
   {{ template "_internal/opengraph.html" . }}
   {{ end }}
 
   {{ with .Params }}
-  <meta name="description" content="{{ .description | default ($.Site.Params.Description) }}" />
-  <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
-  <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
-  <meta property="og:image" content="{{ .image | default " default-image.jpg" | absURL }}" />
+  {{ if .description }}
+  <meta name="description" content="{{ .description }}" />
+  {{ else }}
+  <meta name="description" content="{{ $.Site.Params.metadata.description }}" />
   {{ end }}
+
+  {{ if .title }}
+  <meta property="og:title" content="{{ .title }}" />
+  {{ else }}
+  <meta property="og:title" content="{{ $.Page.Title }}" />
+  {{ end }}
+
+  {{ if .tags }}
+  {{ range .tags }}
+  <meta property="article:tag" content="{{ . }}" />
+  {{ end }}
+  {{ end }}
+  {{ end }}
+
 
 
   <!-- Webpage Title -->
