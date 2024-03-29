@@ -60,7 +60,7 @@
   <meta name="twitter:card" content="{{ . }}">
   {{ end }}
 
-  {{{ if eq .Site.Params.openGraph true }}
+  {{ if eq .Site.Params.openGraph true }}
   {{ template "_internal/opengraph.html" . }}
   {{ end }}
 
