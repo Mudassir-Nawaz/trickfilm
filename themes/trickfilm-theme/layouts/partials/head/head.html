@@ -64,13 +64,20 @@
   {{ template "_internal/opengraph.html" . }}
   {{ end }}
 
-  {{ with .Params }}
+  {{ if eq .Site.Params.openGraph true }}
+  {{ template "_internal/opengraph.html" . }}
+  {{ end }}
+
+  {{ with .Page.Params }}
   <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
   <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
   <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
 
   {{ if .medium }}
-  <meta property="og:medium" content="{{ .medium }}" />
+  {{ $mediumList := split .medium ", " }}
+  {{ range $mediumList }}
+  <meta property="og:medium" content="{{ . }}" />
+  {{ end }}
   {{ end }}
 
   {{ if .date }}
@@ -89,6 +96,7 @@
   <meta property="og:description" content="{{ .description | default ($.Page.Params.medium) }}" />
   {{ end }}
   {{ end }}
+
 
 
 
