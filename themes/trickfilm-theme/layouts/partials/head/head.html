@@ -65,7 +65,7 @@
   {{ end }}
 
   {{ with .Params }}
-  <meta name="description" content="{{ .description | default ($.Site.Params.Description) }}" />
+  <meta name="description" content="{{ .description | default ($.Content) }}" />
   <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
   <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
   <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
