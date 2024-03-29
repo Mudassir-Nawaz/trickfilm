@@ -1,0 +1,15 @@
+<section id="about" class="my-5 py-5">
+  <div class="px-xl-5 container">
+    <div class="row px-xl-5">
+      <div class="col-12">
+        {{ with .title }}
+        <h2 class="fw-semibold">{{ . }}</h2>
+        {{ end }} {{ with .subtitle }}
+        <div class="fs-5 fw-semibold">{{ . | markdownify }}</div>
+        {{ end }} {{ with .content }}
+        <div class="text-dark lh-lg">{{ . | markdownify }}</div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
