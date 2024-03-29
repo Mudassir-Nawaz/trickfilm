@@ -64,16 +64,17 @@
   {{ template "_internal/opengraph.html" . }}
   {{ end }}
 
-  <meta name="description"
-    content="{{ if .Params.description }}{{ .Params.description }}{{ else if .Site.Params.Description }}{{ .Site.Params.Description }}{{ else }}Hardcoded description; the author should update :){{ end }}" />
-  <meta property="og:title"
-    content="{{ if .Page.Title }}{{ .Page.Title }}{{ else if .Site.Title }}{{ .Site.Title }}{{ else }}Hardcoded title; the author should update :){{ end }}" />
-  <meta property="og:url" content="{{ if .Page.Permalink }}{{ .Page.Permalink }}{{ else if .Site.BaseURL }}{{ .Site.BaseURL }}{{ else }}no URL fount; the author should update :){{ end }}"  />
-  <meta property="og:image" content="{{ if .Params.image }}{{ .Params.image }}{{ else }}no image found; the author should update :){{ end }}" />
+  {{ with .Params }}
+  <meta name="description" content="{{ .description | default ($.Site.Params.Description) }}" />
+  <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
+  <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
+  <meta property="og:image" content="{{ .image | default " default-image.jpg" | absURL }}" />
+  {{ end }}
+
 
   <!-- Webpage Title -->
   {{ with (default site.Params.metadata.title .Params.metadata.title) }}
-  <title>{{ . }}</title> 
+  <title>{{ . }}</title>
   {{ end }}
 
 
