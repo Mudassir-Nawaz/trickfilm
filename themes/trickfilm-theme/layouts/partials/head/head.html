@@ -76,11 +76,7 @@
   <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
   <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
   <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
-
-  {{ $tags := index .Params "tags" | default ($.Page.Params.tags) }}
-  {{ range $tags }}
-  <meta property="og:medium" content="{{ . }}" />
-  {{ end }}
+  <meta property="og:medium" content="{{ .medium | default ($.Page.Params.medium) }}" />
   {{ end }}
 
 
