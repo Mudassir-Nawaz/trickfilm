@@ -72,8 +72,11 @@
   {{ template "_internal/opengraph.html" . }}
   {{ end }}
 
+
+  {{ $Date := .Page.Date.Format "2006" }}
+
+
   {{ with .Params }}
-  {{ $Date := .Date.Format "2006-01-02" }}
   <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
   <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
   <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
