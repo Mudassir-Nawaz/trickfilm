@@ -77,8 +77,8 @@
   <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
   <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
 
-  {{ $medium := slice $.Page.Params.medium }}
-  {{ range $medium }}
+  {{ $tags := index .Params "tags" | default ($.Page.Params.tags) }}
+  {{ range $tags }}
   <meta property="og:medium" content="{{ . }}" />
   {{ end }}
   {{ end }}
