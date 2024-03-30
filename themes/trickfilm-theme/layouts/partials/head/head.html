@@ -78,13 +78,10 @@
   <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
   <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
 
-  {{ $directory := "/content/art/" }}
-  {{ $files := readDir $directory }}
-  {{ range $files }}
-  {{ $fileContent := readFile (print $directory "/" .Name) }}
-  {{ $excerpt := $fileContent | truncate 25 }}
-  <meta property="og:description" content="{{ $excerpt }}" />
-  {{ end }}
+  {{ $words := split .Page.Content " " }}
+  {{ $excerpt := "" }}
+  {{ range first 30 $words }}{{ $excerpt = printf "%s %s" $excerpt . }}{{ end }}
+  <meta property="og:description" content="{{ $excerpt | safeHTML }}" />
   {{ end }}
 
 
