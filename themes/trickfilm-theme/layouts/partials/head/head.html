@@ -73,13 +73,17 @@
   {{ end }}
 
   {{ with .Params }}
+
   <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
   <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
   <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
 
-  {{ $tags := index .Params "tags" | default ($.Page.Params.tags) }}
-  {{ range $tags }}
-  <meta property="og:description" content="{{ . }}" />
+  {{ $directory := "/content/art/" }}
+  {{ $files := readDir $directory }}
+  {{ range $files }}
+  {{ $fileContent := readFile (print $directory "/" .Name) }}
+  {{ $excerpt := $fileContent | truncate 25 }}
+  <meta property="og:description" content="{{ $excerpt }}" />
   {{ end }}
   {{ end }}
 
