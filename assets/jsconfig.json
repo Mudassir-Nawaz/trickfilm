@@ -1,0 +1,11 @@
+{
+ "compilerOptions": {
+  "baseUrl": ".",
+  "paths": {
+   "*": [
+    "..\\themes\\trickfilm-theme\\_vendor\\github.com\\twbs\\bootstrap\\js\\*",
+    "..\\themes\\trickfilm-theme\\assets\\*"
+   ]
+  }
+ }
+}

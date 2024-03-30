@@ -1,0 +1,107 @@
+<head>
+  <!-- Meta -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+
+  <!-- Favicons from https://favicon.io/ -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- SEO -->
+
+  <!-- Google tag (gtag.js) -->
+  {{ with site.Params.metadata.googleTag }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', '{{ . }}');
+  </script>
+  {{ end }}
+
+  {{ if (default site.Params.metadata.schema .Params.metadata.schema) }}
+  <script type="application/ld+json">
+      {
+        "@context": "http://schema.org/",
+        "@type": "{{ (default site.Params.metadata.schema.type .Params.metadata.schema.type) }}",
+        "name": "{{ (default site.Params.metadata.schema.name .Params.metadata.schema.name) }}", 
+        "image": "{{ (default (default site.Params.metadata.schema.image .Params.metadata.schema.image) .Params.image) }}", 
+        "mainEntity": {
+          "@type": "{{ (default site.Params.metadata.schema.mainEntityType .Params.metadata.schema.mainEntityType) }}",
+          "name": "{{ (default site.Params.metadata.schema.mainEntityName .Params.metadata.schema.mainEntityName) }}"
+        },
+        "datePublished": "{{ (default site.Params.metadata.schema.datePublished .Params.metadata.schema.datePublished) }}",
+        "description": "{{ (default site.Params.metadata.schema.description .Params.metadata.schema.description) }}",
+        "keywords": "{{ (default site.Params.metadata.schema.keywords .Params.metadata.schema.keywords) }}"
+      }
+    </script>
+  {{ end }}
+
+  <!-- canonical tag -->
+  {{ with (default site.Params.metadata.canonical .Params.metadata.canonical) }}
+  <link rel="canonical" href="{{ . }}">
+  {{ end }}
+
+  <!-- SEO Meta Tags -->
+  {{ with (default site.Params.metadata.description .Params.metadata.description) }}
+  <meta name="description" content="{{ . }}">
+  {{ end }}
+
+  {{ with (default site.Params.metadata.author .Params.metadata.author) }}
+  <meta name="author" content="{{ . }}">
+  {{ end }}
+
+  <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+  {{ with (default site.Params.metadata.twitterCard .Params.metadata.twitterCard) }}
+  <meta name="twitter:card" content="{{ . }}">
+  {{ end }}
+
+  {{ if eq .Site.Params.openGraph true }}
+  {{ template "_internal/opengraph.html" . }}
+  {{ end }}
+
+  {{ if eq .Site.Params.openGraph true }}
+  {{ template "_internal/opengraph.html" . }}
+  {{ end }}
+
+  {{ if eq .Site.Params.openGraph true }}
+  {{ template "_internal/opengraph.html" . }}
+  {{ end }}
+
+  {{ with .Params }}
+  <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
+  <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
+  <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
+  <meta property="og:description" content="{{ .Params.medium | default ($.Page.Params.medium) }} | {{ .Date }}" />
+  {{ end }}
+
+
+
+
+
+  <!-- Webpage Title -->
+  {{ with (default site.Params.metadata.title .Params.metadata.title) }}
+  <title>{{ . }}</title>
+  {{ end }}
+
+
+  <!-- RSS -->
+  {{ range .AlternativeOutputFormats -}}
+  {{ printf `
+  <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
+
+  <!-- Load SCSS -->
+  {{- $styles := resources.Get "scss/styles.scss" -}}
+  {{- $styles := $styles | resources.ToCSS (dict "outputStyle" "compressed" "includePaths" (slice "assets")) -}}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" type="text/css" media="all">
+
+  <!-- Load JS -->
+  {{- $index := resources.Get "js/index.js" -}}
+  {{- $index := $index | js.Build (dict "minify" "true") -}}
+  <script defer src="{{ $index.Permalink }}"></script>
+</head>
