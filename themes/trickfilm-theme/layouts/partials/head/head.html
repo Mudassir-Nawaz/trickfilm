@@ -73,14 +73,18 @@
   {{ end }}
 
 
-  {{ $Date := .Page.Date.Format "2006" }}
+  {{ $Date := .Page.Date }}
+  {{ $Year := "" }}
+  {{ with $Date }}
+  {{ $Year = .Year }}
+  {{ end }}
 
 
   {{ with .Params }}
   <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
   <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
   <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
-  <meta property="og:description" content="{{ .Params.medium | default ($.Page.Params.medium) }} | {{ $Date }}" />
+  <meta property="og:description" content="{{ .Params.medium | default ($.Page.Params.medium) }} | {{ $Year }}" />
   {{ end }}
 
 
