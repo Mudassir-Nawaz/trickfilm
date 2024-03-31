@@ -88,8 +88,8 @@
   <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
   <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
   <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
-  <meta property="og:site_name" content="{{ $Year }}" />
   <meta property="og:description" content="{{ $Content }}" />
+  <meta property="og:site_name" content="{{ .Page.Params.medium | default ($.Page.Params.medium) }} | {{ $Year }}" />
   
   {{ end }}
 
