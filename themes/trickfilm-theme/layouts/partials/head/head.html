@@ -87,10 +87,7 @@
   <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
   <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
   <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
-  {{ if $Content }}
-  <meta property="og:description" content="{{ $Content }}" />
-  {{ end }}
-  <meta property="og:site_name" content="{{ with .medium }}{{ . }}{{ else }}{{ $.Page.Params.medium }}{{ end }} | {{ $Year }}" />
+  <meta property="og:description" content="{{ with .medium }}{{ . }}{{ else }}{{ $.Page.Params.medium }}{{ end }} | {{ $Year }} /n/n {{ $Content }}" />
   {{ end }}
 
 
