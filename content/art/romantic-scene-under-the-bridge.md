@@ -1,7 +1,7 @@
 ---
-title: "Romance Under The Bridge"
+title: "Romanctic Scene Under The Bridge"
 medium: "graphite on paper, digital"
 date: "2011-03-23"
 tags: ["works on paper", "digital media"]
-image: "art/romance-under-the-bridge.jpg"
+image: "art/romantic-scene-under-the-bridge.jpg"
 ---
