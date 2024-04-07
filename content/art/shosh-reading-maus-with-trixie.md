@@ -5,3 +5,4 @@ date: "2022-05-01"
 tags: ["works on paper"]
 image: "art/shosh-reading-maus-with-trixie.jpg"
 ---
+"Why am I reading this book again? Am I nuts?"
