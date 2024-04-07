@@ -88,6 +88,11 @@
   <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
   <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
   <meta property="og:description" content="{{ .Params.medium | default ($.Page.Params.medium) }} | {{ $Year }}" />
+  <meta property="og:image:secure_url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
+  <meta property="og:image:type" content="{{ .image_type | default ($.Page.Params.image_type) | safeHTML }}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
   {{ if $Content }}
   <meta property="og:description" content="{{ $Content }}" />
   {{ end }}
