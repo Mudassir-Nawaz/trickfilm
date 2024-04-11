@@ -88,13 +88,20 @@
   <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
   <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
   <meta property="og:description" content="{{ .Params.medium | default ($.Page.Params.medium) }} | {{ $Year }}" />
-  <meta property="og:image:type" content="{{ .image_type | default ($.Page.Params.image_type) }}" />
-  {{ with .Page.Params.image }}
-  {{ $image := printf "art/%s" . | absURL }}
-  {{ $imageInfo := $.Page.Resources.GetMatch $image }}
-  <meta property="og:image:width" content="{{ $imageInfo.Width }}" />
-  <meta property="og:image:height" content="{{ $imageInfo.Height }}" />
+  {{ $imagePath := .Page.Params.image }}
+  {{ $imageType := "" }}
+
+  {{ if $imagePath }}
+  {{ $imageType = path.Ext $imagePath | trim "." | lower }}
   {{ end }}
+
+  <meta property="og:image:type" content="image/{{ $imageType }}" />
+
+  {{ with .Page.Resources.GetMatch (printf "art/%s" $imagePath) }}
+  <meta property="og:image:width" content="{{ .Width }}" />
+  <meta property="og:image:height" content="{{ .Height }}" />
+  {{ end }}
+
   <meta property="og:image:alt" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
   {{ if $Content }}
   <meta property="og:description" content="{{ $Content }}" />
