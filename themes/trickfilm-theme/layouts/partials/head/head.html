@@ -79,7 +79,47 @@
   {{ $Year = .Year }}
   {{ end }}
 
+  {{ $Date := .Page.Date }}
+  {{ $Year := "" }}
+  {{ with $Date }}
+  {{ $Year = .Year }}
+  {{ end }}
 
+
+  {{ $Content := .Page.Content }}
+
+
+  {{ with .Params }}
+  <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
+  <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
+  <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
+  <meta property="og:description" content="{{ .Params.medium | default ($.Page.Params.medium) }} | {{ $Year }}" />
+  {{ $fileName := .image | default ($.Page.Params.image) }}
+  {{ $parts := split $fileName "." }}
+  {{ $extension := index $parts 1 }}
+
+  {{ if eq $extension "jpg" }}
+  <meta property="og:image:type" content="image/jpeg" />
+  {{ else if eq $extension "png" }}
+  <meta property="og:image:type" content="image/png" />
+  {{ else }}
+  <meta property="og:image:type" content="" />
+  {{ end }}
+
+  {{ with .image | default ($.Page.Params.image) }}
+  {{ with resources.Get . }}
+  <meta property="og:image:width" content="{{ .Width }}" />
+  <meta property="og:image:height" content="{{ .Height }}" />
+  {{ end }}
+  {{ end }}
+
+  <meta property="og:image:alt" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
+  {{ if $Content }}
+  <meta property="og:description" content="{{ $Content }}" />
+  {{ end }}
+  {{ end }}
+
+<!-- 
   {{ $Content := .Page.Content }}
 
 
@@ -101,29 +141,29 @@
   {{ end }}
   {{ end }}
 
+-->
 
 
 
+<!-- Webpage Title -->
+{{ with (default site.Params.metadata.title .Params.metadata.title) }}
+<title>{{ . }}</title>
+{{ end }}
 
-  <!-- Webpage Title -->
-  {{ with (default site.Params.metadata.title .Params.metadata.title) }}
-  <title>{{ . }}</title>
-  {{ end }}
 
+<!-- RSS -->
+{{ range .AlternativeOutputFormats -}}
+{{ printf `
+<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{ end -}}
 
-  <!-- RSS -->
-  {{ range .AlternativeOutputFormats -}}
-  {{ printf `
-  <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-  {{ end -}}
+<!-- Load SCSS -->
+{{- $styles := resources.Get "scss/styles.scss" -}}
+{{- $styles := $styles | resources.ToCSS (dict "outputStyle" "compressed" "includePaths" (slice "assets")) -}}
+<link rel="stylesheet" href="{{ $styles.Permalink }}" type="text/css" media="all">
 
-  <!-- Load SCSS -->
-  {{- $styles := resources.Get "scss/styles.scss" -}}
-  {{- $styles := $styles | resources.ToCSS (dict "outputStyle" "compressed" "includePaths" (slice "assets")) -}}
-  <link rel="stylesheet" href="{{ $styles.Permalink }}" type="text/css" media="all">
-
-  <!-- Load JS -->
-  {{- $index := resources.Get "js/index.js" -}}
-  {{- $index := $index | js.Build (dict "minify" "true") -}}
-  <script defer src="{{ $index.Permalink }}"></script>
+<!-- Load JS -->
+{{- $index := resources.Get "js/index.js" -}}
+{{- $index := $index | js.Build (dict "minify" "true") -}}
+<script defer src="{{ $index.Permalink }}"></script>
 </head>
