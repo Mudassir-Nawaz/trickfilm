@@ -5,3 +5,4 @@ date: "2023-06-20"
 tags: ["mixed media", "sculpture"]
 image: "art/tube-cathedral-2.jpg"
 ---
+Another anamorphic construction, designed in OnShape CAD.
