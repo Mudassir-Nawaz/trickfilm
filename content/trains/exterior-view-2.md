@@ -1,4 +1,4 @@
 ---
-title: "Exterior View 2"
+title: "exterior view 2"
 image: "trains/redbird_004.jpg"
 ---
