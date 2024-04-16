@@ -21,37 +21,36 @@
   <div class="px-xl-5 container">
     <div class="row px-xl-5">
 
-  <div class="col-12">
-    <div class="d-flex align-items-center justify-content-center">
-    <img src="/trains/redbird_011jpg" alt="" class="object-fit-cover object-position-center" />
+    </div>
   </div>
-  </div>
-
-<!-- <div class="col-12">
-<div class="d-flex align-items-center justify-content-center">
-<a href="/art" class="btn btn-info mx-1"> Latest </a>
-<a href="/tags" class="btn btn-info mx-1"> Tags </a>
-</div>
-</div> -->
-
-</div>
-</div>
-<div class="px-xl-5 container">
+  <div class="px-xl-5 container">
 
 
-  <div class="row px-xl-5">
-    <div class="col-12">
-      {{ with .Content }}
-      <div class="text-dark lh-lg">{{ . }}</div>
-      {{ end }}
+    <div class="row px-xl-5">
+      <div class="col-12">
+        <div class="d-flex ">
+
+          <h1>Was this your ride?</h1>
+        </div>
+
+        <div class="row px-xl-5">
+
+          <img src="https://trickfilm.github.io/uploads/hero-background.jpg" alt="" display="inline-flex" > 
+
+        </div>
+
+
+
+        {{ with .Content }}
+        <div class="text-dark lh-lg">{{ . }}</div>
+        {{ end }}
+
+
+      </div>
     </div>
   </div>
 </div>
-<div>
-  <!-- {{ with .Params.image }} {{ $backgroundImage := resources.Get . }} -->
-    <img src="/trains/hero.jpg" alt="" class="w-200 h-200 object-fit-cover object-position-center" />
-    <!-- {{ end }} -->
-</div>
+
 <div class="px-xl-5 container my-5">
   <div id="gallery--individual--art--list" class="row px-xl-5 pswp-gallery">
     {{ range .Paginator.Pages }} {{ if .Params.image }}
@@ -71,19 +70,16 @@
       {{ if .Title }}
       <h3 class="fs-6 mb-1 text-center"><a href="{{ .Permalink }}" class="text-dark">{{ .Title }}</a></h3>
       {{ end }} 
-<!--   {{ with .Date.Format "2006" }}
-<p class="mb-0 text-center">{{ . }}</p>
-{{ end }} {{ with .Params.medium }}
-<p class="mb-0 text-center">{{ . }}</p>
-{{ end }} -->
-<div class="d-flex align-items-center justify-content-center small my-2">
-  {{ with .GetTerms "tags" }} {{ range . }}
-  <a href="{{ .Permalink }}" class="badge rounded-pill text-bg-info mx-1"> {{ .Title }} </a>
+
+
+      <div class="d-flex align-items-center justify-content-center small my-2">
+        {{ with .GetTerms "tags" }} {{ range . }}
+        <a href="{{ .Permalink }}" class="badge rounded-pill text-bg-info mx-1"> {{ .Title }} </a>
+        {{ end }} {{ end }}
+      </div>
+    </div>
+  </div>
   {{ end }} {{ end }}
-</div>
-</div>
-</div>
-{{ end }} {{ end }}
 </div>
 </div>
 <div class="px-xl-5 container my-5">
