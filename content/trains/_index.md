@@ -1,6 +1,6 @@
 ---
 title: "trains"
-subtitle: "limited edition, handmade scale model of a vintage NYC Transit R-17"
+subtitle: "limited edition, handmade 1:25 scale model of a vintage NYC Transit R-17"
 ---
  </br> <br>
 
