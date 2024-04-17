@@ -6,11 +6,13 @@ new PhotoSwipeLightbox({
 }).init()
 
 new PhotoSwipeLightbox({
-  gallery: '#gallery--individual--trains a',
+  gallery: '#gallery--individual--trains',
+  children: '.train--single',
   pswpModule: () => import('./photoswipe/photoswipe.esm.js'),
 }).init()
 
 new PhotoSwipeLightbox({
-  gallery: '#gallery--individual--art--list .gallery--item',
+  gallery: '#gallery--individual--art--list',
+  children: '.gallery--item',
   pswpModule: () => import('./photoswipe/photoswipe.esm.js'),
 }).init()
