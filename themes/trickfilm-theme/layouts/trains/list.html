@@ -53,13 +53,13 @@
 </div>
 
 <div class="px-xl-5 container my-5">
-  <div id="gallery--individual--art--list" class="row px-xl-5 pswp-gallery">
+  <div id="gallery--individual--train--list" class="row px-xl-5 pswp-gallery">
     {{ range .Paginator.Pages }} {{ if .Params.image }}
     {{ $image := resources.Get .Params.image }}
     {{ if not $image }} {{ warnf "Image not found: %s." .Params.image }} {{ end }}
     <div class="col-12 col-xl-4 d-flex flex-column align-items-center justify-content-center text-decoration-none">
       <a
-      class="gallery--item"
+      class="train--item"
       href="{{ $image.Permalink }}"
       data-pswp-width="{{ $image.Width }}"
       data-pswp-height="{{ $image.Height }}"
