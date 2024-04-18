@@ -18,13 +18,13 @@
 </section>
 <section id="trains" class="py-5 mb-5">
   <div class="px-xl-5 container my-5">
-    <div id="gallery--individual--art--list" class="row px-xl-5 pswp-gallery">
+    <div id="gallery--individual--trains" class="row px-xl-5 pswp-gallery">
       {{ $image := resources.Get .Params.image }}
       {{ if not $image }} {{ warnf "Image not found: %s." .Params.image }} {{ end }}
       <div class="col-12 d-flex flex-column align-items-center justify-content-center text-decoration-none">
         <div class="mb-5">
           <a
-          class="gallery--item"
+          class="train--single"
           href="{{ $image.Permalink }}"
           data-pswp-width="{{ $image.Width }}"
           data-pswp-height="{{ $image.Height }}"
