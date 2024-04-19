@@ -18,7 +18,7 @@
       {{ $image := resources.Get . }}
       {{ if not $image }} {{ warnf "Image not found: %s." . }} {{ end }}
       <a
-        class="col-12 col-xl-4 d-flex align-items-center justify-content-center"
+        class="col-12 col-xl-4 d-flex align-items-center justify-content-center train--single"
         href="{{ $image.Permalink }}"
         data-pswp-width="{{ $image.Width }}"
         data-pswp-height="{{ $image.Height }}"
