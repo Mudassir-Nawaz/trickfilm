@@ -5,3 +5,7 @@ date: "2019-01-31"
 tags: ["works on paper", "asthma", "dreams"]
 image: "art/dream-rosh-hashana-prednisone.jpg"
 ---
+<<<<<<< HEAD
+=======
+Not advocating that anyone abuse steroids, but I have never been more productive than during a course of Prednisone. Talk to your doctor!
+>>>>>>> 679dba06d5d5fcbd5072c8e10f88f1dc30985bd2

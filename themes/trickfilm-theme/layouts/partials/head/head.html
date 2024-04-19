@@ -25,6 +25,7 @@
 
   {{ if (default site.Params.metadata.schema .Params.metadata.schema) }}
   <script type="application/ld+json">
+<<<<<<< HEAD
       {
         "@context": "http://schema.org/",
         "@type": "{{ (default site.Params.metadata.schema.type .Params.metadata.schema.type) }}",
@@ -39,6 +40,22 @@
         "keywords": "{{ (default site.Params.metadata.schema.keywords .Params.metadata.schema.keywords) }}"
       }
     </script>
+=======
+    {
+      "@context": "http://schema.org/",
+      "@type": "{{ (default site.Params.metadata.schema.type .Params.metadata.schema.type) }}",
+      "name": "{{ (default site.Params.metadata.schema.name .Params.metadata.schema.name) }}", 
+      "image": "{{ (default (default site.Params.metadata.schema.image .Params.metadata.schema.image) .Params.image) }}", 
+      "mainEntity": {
+        "@type": "{{ (default site.Params.metadata.schema.mainEntityType .Params.metadata.schema.mainEntityType) }}",
+        "name": "{{ (default site.Params.metadata.schema.mainEntityName .Params.metadata.schema.mainEntityName) }}"
+      },
+      "datePublished": "{{ (default site.Params.metadata.schema.datePublished .Params.metadata.schema.datePublished) }}",
+      "description": "{{ (default site.Params.metadata.schema.description .Params.metadata.schema.description) }}",
+      "keywords": "{{ (default site.Params.metadata.schema.keywords .Params.metadata.schema.keywords) }}"
+    }
+  </script>
+>>>>>>> 679dba06d5d5fcbd5072c8e10f88f1dc30985bd2
   {{ end }}
 
   <!-- canonical tag -->
@@ -79,6 +96,15 @@
   {{ $Year = .Year }}
   {{ end }}
 
+<<<<<<< HEAD
+=======
+  {{ $Date := .Page.Date }}
+  {{ $Year := "" }}
+  {{ with $Date }}
+  {{ $Year = .Year }}
+  {{ end }}
+
+>>>>>>> 679dba06d5d5fcbd5072c8e10f88f1dc30985bd2
 
   {{ $Content := .Page.Content }}
 
@@ -113,6 +139,7 @@
   {{ end }}
   {{ end }}
 
+<<<<<<< HEAD
 
 
 
@@ -138,4 +165,53 @@
   {{- $index := resources.Get "js/index.js" -}}
   {{- $index := $index | js.Build (dict "minify" "true") -}}
   <script defer src="{{ $index.Permalink }}"></script>
+=======
+<!-- 
+  {{ $Content := .Page.Content }}
+
+
+  {{ with .Params }}
+  <meta property="og:title" content="{{ .title | default ($.Page.Title) | default ($.Site.Title) }}" />
+  <meta property="og:image" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
+  <meta property="og:url" content="{{ .url | default ($.Page.Permalink | absURL) }}" />
+  <meta property="og:description" content="{{ .Params.medium | default ($.Page.Params.medium) }} | {{ $Year }}" />
+  <meta property="og:image:type" content="{{ .image_type | default ($.Page.Params.image_type) }}" />
+  {{ with .Page.Params.image }}
+  {{ $image := printf "art/%s" . | absURL }}
+  {{ $imageInfo := $.Page.Resources.GetMatch $image }}
+  <meta property="og:image:width" content="{{ $imageInfo.Width }}" />
+  <meta property="og:image:height" content="{{ $imageInfo.Height }}" />
+  {{ end }}
+  <meta property="og:image:alt" content="{{ .image | default ($.Page.Params.image) | absURL }}" />
+  {{ if $Content }}
+  <meta property="og:description" content="{{ $Content }}" />
+  {{ end }}
+  {{ end }}
+
+-->
+
+
+
+<!-- Webpage Title -->
+{{ with (default site.Params.metadata.title .Params.metadata.title) }}
+<title>{{ . }}</title>
+{{ end }}
+
+
+<!-- RSS -->
+{{ range .AlternativeOutputFormats -}}
+{{ printf `
+<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{ end -}}
+
+<!-- Load SCSS -->
+{{- $styles := resources.Get "scss/styles.scss" -}}
+{{- $styles := $styles | resources.ToCSS (dict "outputStyle" "compressed" "includePaths" (slice "assets")) -}}
+<link rel="stylesheet" href="{{ $styles.Permalink }}" type="text/css" media="all">
+
+<!-- Load JS -->
+{{- $index := resources.Get "js/index.js" -}}
+{{- $index := $index | js.Build (dict "minify" "true") -}}
+<script defer src="{{ $index.Permalink }}"></script>
+>>>>>>> 679dba06d5d5fcbd5072c8e10f88f1dc30985bd2
 </head>

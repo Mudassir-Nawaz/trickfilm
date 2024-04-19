@@ -5,3 +5,7 @@ date: "2018-06-10"
 tags: ["works on paper", "dreams", "comics"]
 image: "art/dream-of-blondie-and-the-blind-actors.jpg"
 ---
+<<<<<<< HEAD
+=======
+Another nugget from my Jess Collins phase. 
+>>>>>>> 679dba06d5d5fcbd5072c8e10f88f1dc30985bd2

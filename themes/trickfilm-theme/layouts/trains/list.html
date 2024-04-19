@@ -1,0 +1,92 @@
+{{ define "main" }}
+<section class="bg-dark position-relative d-flex flex-column justify-content-center bg-opacity-25 pt-5 pb-3">
+  <div class="position-absolute z-n1 bg-dark bottom-0 end-0 start-0 top-0">
+    {{ with .Params.image }} {{ $backgroundImage := resources.Get . }}
+    <img src="{{ $backgroundImage.Permalink }}" alt="" class="w-200 h-200 object-fit-cover object-position-center" />
+    {{ end }}
+  </div>
+  <div class="px-xl-5 container pt-5">
+    <div class="row px-xl-5">
+      <div class="col-12 col-xl-6">
+        <h1 class="fw-semibold text-xl-start text-center text-white">{{ .Title }}</h1>
+      </div>
+      {{ with .Params.subtitle }}
+      <div class="fs-5 fw-semibold text-white">{{ . | markdownify }}</div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section id="trains" class="my-5 py-5">
+  <div class="px-xl-5 container">
+    <div class="row px-xl-5">
+
+    </div>
+  </div>
+  <div class="px-xl-5 container">
+
+
+    <div class="row px-xl-5">
+      <div class="col-12">
+        <div class="d-flex ">
+
+          <h1>Was this your ride?</h1>
+        </div>
+
+        <div class="row px-xl-5">
+
+<img src="https://trickfilm.github.io/uploads/hero-background.jpg" alt="" display="inline-flex" >  
+
+
+        </div>
+
+
+
+        {{ with .Content }}
+        <div class="text-dark lh-lg">{{ . }}</div>
+        {{ end }}
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="px-xl-5 container my-5">
+  <div id="gallery--individual--train--list" class="row px-xl-5 pswp-gallery">
+    {{ range .Paginator.Pages }} {{ if .Params.image }}
+    {{ $image := resources.Get .Params.image }}
+    {{ if not $image }} {{ warnf "Image not found: %s." .Params.image }} {{ end }}
+    <div class="col-12 col-xl-4 d-flex flex-column align-items-center justify-content-center text-decoration-none">
+      <a
+      class="train--item"
+      href="{{ $image.Permalink }}"
+      data-pswp-width="{{ $image.Width }}"
+      data-pswp-height="{{ $image.Height }}"
+      target="_blank">
+
+      <img src="{{ $image.Permalink }}" alt="" class="mw-100 h-auto" />
+    </a>
+    <div class="mb-3">
+      {{ if .Title }}
+      <h3 class="fs-6 mb-1 text-center"><a href="{{ .Permalink }}" class="text-dark">{{ .Title }}</a></h3>
+      {{ end }} 
+
+
+      <div class="d-flex align-items-center justify-content-center small my-2">
+        {{ with .GetTerms "tags" }} {{ range . }}
+        <a href="{{ .Permalink }}" class="badge rounded-pill text-bg-info mx-1"> {{ .Title }} </a>
+        {{ end }} {{ end }}
+      </div>
+    </div>
+  </div>
+  {{ end }} {{ end }}
+</div>
+</div>
+<div class="px-xl-5 container my-5">
+  <div class="row px-xl-5">
+    <div class="col-12 justify-content-center flex">{{ template "_internal/pagination.html" . }}</div>
+  </div>
+</div>
+</section>
+{{ end }}
