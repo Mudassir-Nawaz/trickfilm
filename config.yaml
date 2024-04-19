@@ -1,0 +1,114 @@
+baseURL: 'https://mudassir-nawaz.github.io/trickfilm/'
+languageCode: 'en-us'
+theme: 'trickfilm-theme'
+
+title: 'Luke Jaeger'
+author: ''
+
+# googleAnalytics is deprecated -- see https://discourse.gohugo.io/t/replace-hugos-inbuilt-google-analytics-template-with-minimal-analytics-ga4/43704    
+googleAnalytics: "G-VJCR2B1XTG"
+
+# although the new way doesn't seem to work either, so it's commented out too
+#[services]
+#  [services.googleAnalytics]
+#    ID = 'G-VJCR2B1XTG'
+
+paginate: 9
+
+params:
+  description: >
+    Luke Jaeger was born with a tool belt on, and can’t seem to stop creating.
+    A native of Brooklyn, he’s lived and traveled in cities across the globe,
+    but his work continually returns to the boilerplate metal and the clackety
+    tracks of the NY subways of his youth.
+
+  images: []
+  copyright: 'Copyright © Luke Jaeger'
+
+  metadata:
+    title: "trickfilm.org | Luke Jaeger"
+    description: "Luke Jaeger was born with a tool belt on, and can’t seem to stop creating. A native of Brooklyn, he’s lived and traveled in cities across the globe, but his work continually returns to the boilerplate metal and the clackety tracks of the NY subways of his youth."
+    canonical: "https://trickfilm.github.io/index.html"
+    author: "Luke Jaeger"
+    googleTag: "G-VJCR2B1XTG"
+    schema:
+      type: "ProfilePage"
+      name: "Luke Jaeger | trickfilm.org | art, animation, trains"
+      image: "https://trickfilm.github.io/uploads/hero-background.jpg"
+      mainEntityType: "Person"
+      mainEntityName: "Luke Jaeger"
+      datePublished: "2024-01-31"
+      description: "Official site of artist / animator Luke Jaeger"
+      keywords: "art, animation, trains, subway, redbird, cartoon, miniature, comics, funk, soul, oldschool, cad, makerspace, compositing, photoshop, after effects"
+    twitterCard: "summary_large_image"
+    ogDescription: "art, animation, trains"
+    ogImage: "https://trickfilm.github.io/uploads/hero-background.jpg"
+    ogSite: "https://trickfilm.github.io"
+    ogSiteName: "trickilm.org"
+    ogTitle: "Luke Jaeger | trickfilm.org"
+    ogType: "website"
+    ogUrl: "https://trickfilm.github.io"
+
+taxonomies:
+  categories: 'categories'
+  series: 'series'
+  tags: 'tags'
+
+minify:
+  minifyOutput: true
+
+menus:
+  main:
+    - name: 'home'
+      url: '/#hero'
+      weight: 100
+
+    - name: 'about'
+      url: '/#about'
+      weight: 200
+
+    - name: 'art'
+      url: '/art'
+      weight: 300
+
+    - name: 'animation'
+      url: '/#animation'
+      weight: 400
+
+    - name: 'trains'
+      url: '/trains'
+      weight: 500
+
+    - name: 'cv'
+      url: '/#cv'
+      weight: 550
+
+    - name: 'publications'
+      url: '/publications'
+      weight: 590
+
+    - name: 'contact'
+      url: '/#contact'
+      weight: 600
+
+  social:
+    - name: 'Facebook'
+      pre: 'facebook'
+      url: 'https://www.facebook.com/profile.php?id=61553366907118'
+      weight: 100
+
+    - name: 'Instagram'
+      pre: 'instagram'
+      url: 'https://www.instagram.com/famous_original_luke_jaeger/'
+      weight: 200
+
+    - name: 'Vimeo'
+      pre: 'vimeo'
+      url: 'https://vimeo.com/showcase/5097789'
+      weight: 300
+
+    - name: 'LinkedIn'
+      pre: 'linkedin'
+      url: 'https://www.linkedin.com/in/trickfilm/'
+      weight: 400
+
